@@ -1,0 +1,38 @@
+# * Esto es para ver las consultas, sin postman.
+
+### Recuperar todos los datos
+GET http://localhost:3000
+
+### Obtener todas las películas
+GET http://localhost:3000/movies
+
+### Obtener película por id
+GET http://localhost:3000/movies/1
+
+### Obtener película por género
+# GET http://localhost:3000/movies?genre=thriller
+GET http://localhost:3000/movies?genre="SELECT * FROM movies"
+
+### Crear una película
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+    "sql": "SELECT * FROM users",
+    "title": "Prueba nueva",
+    "year": 1999,
+    "director": "Daniel Myrick, Eduardo Sánchez",
+    "duration": 81,
+    "poster": "https://image.tmdb.org/t/p/blairwitch.jpg",
+    "genre": ["Horror", "Mystery"] 
+}
+
+### Actualizar una película
+PATCH http://localhost:3000/movies/1
+Content-Type: application/json
+
+{
+    "id": "123123",
+    "title": 123
+}
+
