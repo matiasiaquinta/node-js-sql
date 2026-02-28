@@ -7,13 +7,13 @@ GET http://localhost:3000
 GET http://localhost:3000/movies
 
 ### Obtener película por id
-GET http://localhost:3000/movies/1
+GET http://localhost:3000/movies/166a7ef9-7ba3-11f0-9ace-00090faa0001
 
 ### Obtener película por género
 # GET http://localhost:3000/movies?genre=thriller
-GET http://localhost:3000/movies?genre="SELECT * FROM movies"
+GET http://localhost:3000/movies?genre=ACTION
 
-### Crear una película
+### Crear una película - gracias a zod no se genera el "sql"
 POST http://localhost:3000/movies
 Content-Type: application/json
 
@@ -21,10 +21,11 @@ Content-Type: application/json
     "sql": "SELECT * FROM users",
     "title": "Prueba nueva",
     "year": 1999,
-    "director": "Daniel Myrick, Eduardo Sánchez",
+    "director": "Daniel Myrick",
     "duration": 81,
     "poster": "https://image.tmdb.org/t/p/blairwitch.jpg",
-    "genre": ["Horror", "Mystery"] 
+    "rate": 7.8,
+    "genre": ["Horror", "Mystery", "Action"]
 }
 
 ### Actualizar una película

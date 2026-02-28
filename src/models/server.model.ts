@@ -12,12 +12,6 @@ import { MovieController } from '../controllers/movie.controller';
 
 // import cors, { CorseOptions } from 'cors';
 
-import { initDb } from '../mysql/movie';
-
-initDb().then(() => {
-    const server = new Server();
-})
-
 class Server {
     private app: Application;
     private port: string;
@@ -25,10 +19,10 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT || '3000';
-        this.listen();
         this.middlewares();
         
         this.newStart();
+        this.listen();
         // this.start();
 
         // this.routes();
@@ -47,6 +41,8 @@ class Server {
 
     newStart() {
         this.app.get('/movies', MovieController.getAll);
+        this.app.get('/movies/:id', MovieController.getById);
+        this.app.post('/movies', MovieController.create);
     }
 
     start() {
